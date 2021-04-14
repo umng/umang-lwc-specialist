@@ -1,0 +1,27 @@
+<template>
+    <lightning-spinner variant="brand" if:true={isLoading}></lightning-spinner>
+    <div class="slds-p-around_small container">
+        <div class="slds-grid slds-wrap slds-align_absolute-center slds-size_1-of-1 slds-large-size_8-of-12">
+            <div class="slds-col slds-size_3-of-4 slds-large-size_1-of-12 slds-p-around_x-small">
+                <lightning-combobox variant="label-hidden" name="category" label="Category" value={categorySelected}
+                    options={categoryOptions} onchange={handleChange}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_3-of-4 slds-large-size_3-of-12 slds-p-around_x-small">
+                <lightning-input variant="label-hidden" type="search" name="search" placeholder="Search..."
+                    onchange={handleChange}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-large-size_1-of-12 slds-p-around_x-small">
+                <lightning-button variant="brand" label="Search" onclick={handleSearch}></lightning-button>
+            </div>
+        </div>
+        <template for:each={searchResults} for:item="knowledge">
+            <lightning-card class="slds-size_1-of-1 slds-large-size_6-of-12" title={knowledge.Name} key={knowledge.Id}>
+                <a href="javascriptL:void()" name={knowledge.Id} onclick={createStatisticsRecord}>{knowledge.Name}</a>
+                <lightning-badge label={knowledge.Category__c} slot="actions"></lightning-badge>
+                <lightning-formatted-rich-text value={knowledge.Description__c}></lightning-formatted-rich-text>
+            </lightning-card>
+        </template>
+    </div>
+</template>

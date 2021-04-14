@@ -1,0 +1,16 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  },
+  "cSpell.ignoreWords": [
+    "boatmc",
+    "fivestar",
+    "get",
+    "iframe",
+    "indhra",
+    "picklist",
+    "values"
+  ]
+}
